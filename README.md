@@ -1,2 +1,3 @@
-orangesignal-android-decklayout-example
-=======================================
+# OrangeSignal Android DeckLayout Example
+
+ example android app project.

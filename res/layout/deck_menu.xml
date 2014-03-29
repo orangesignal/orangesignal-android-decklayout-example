@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU Lesser General Public License as
+  published by the Free Software Foundation, either version 3 of the
+  License, or (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Lesser Public License for more details.
+
+  You should have received a copy of the GNU General Lesser Public
+  License along with this program.  If not, see
+  <http://www.gnu.org/licenses/lgpl-3.0.html>.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/deck_menu"
+	android:layout_width="wrap_content"
+	android:layout_height="match_parent">
+
+	<RelativeLayout android:id="@+id/content"
+			android:layout_width="250dp"
+			android:layout_height="match_parent"
+			android:background="#FF7228">
+		<ImageView
+			android:id="@+id/header"
+			android:layout_width="match_parent"
+			android:layout_height="66dp"
+			android:layout_alignParentTop="true"
+			android:scaleType="center"
+			android:src="@drawable/logo" />
+		<ListView
+			android:id="@android:id/list"
+			android:layout_below="@id/header"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:choiceMode="singleChoice"
+			android:scrollbars="none"
+			android:divider="#40000000"
+			android:dividerHeight="1px"
+			android:listSelector="@android:color/transparent" />
+		<View
+			android:layout_below="@id/header"
+			android:layout_width="match_parent"
+			android:layout_height="7dp"
+			android:scaleType="centerCrop"
+			android:background="@drawable/deck_menu_header_shadow" />
+	</RelativeLayout>
+	<View
+		android:layout_toRightOf="@id/content"
+		android:layout_width="7dp"
+		android:layout_height="match_parent"
+		android:scaleType="fitCenter"
+		android:background="@drawable/deck_menu_shadow" />
+</RelativeLayout>
