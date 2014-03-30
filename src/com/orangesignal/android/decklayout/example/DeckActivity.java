@@ -25,7 +25,6 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -50,6 +49,7 @@ public final class DeckActivity extends Activity {
 	private Deck mDeck;
 	private View mMenuView;
 	private ListView mListView;
+	private int mSelectedItemPosition;
 
 	/**
 	 * デッキカードが削除可能状態かどうかを保持します。
@@ -81,8 +81,8 @@ public final class DeckActivity extends Activity {
 		setupDataSource();
 
 		mListView.setItemChecked(0, true);
-		DeckCardFragment f = new DeckCardFragment();
-		mDeckManager.attach(f, "top");
+		mSelectedItemPosition = mListView.getSelectedItemPosition();
+		mDeckManager.attach(new DeckCardFragment(), "top");
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -106,12 +106,13 @@ public final class DeckActivity extends Activity {
 		}
 	}
 
-	boolean onDeckMenuItemSelected(final CheckedTextView v, final Fragment f) {
-		if (v.isChecked()) {
+	boolean onDeckMenuItemSelected(final CheckedTextView v, final int position) {
+		if (mSelectedItemPosition == position) {
 			mDeck.showFirstCard();
 			return false;
 		}
-		mDeckManager.attach(f, "top");
+		mDeckManager.attach(new DeckCardFragment(), "top");
+		mSelectedItemPosition = position;
 		return true;
 	}
 
@@ -169,7 +170,7 @@ public final class DeckActivity extends Activity {
 
 			@Override
 			public void onItemClick(final AdapterView<?> parent, final View view, final int position, final long id) {
-				onDeckMenuItemSelected((CheckedTextView) view, new DeckCardFragment());
+				onDeckMenuItemSelected((CheckedTextView) view, position);
 			}
 
 		});
