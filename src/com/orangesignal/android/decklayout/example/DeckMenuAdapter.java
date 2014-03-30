@@ -35,7 +35,7 @@ import android.widget.CheckedTextView;
  * @author Koji Sugisawa
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public final class DeckMenuAdapter extends ArrayAdapter<String> {
+final class DeckMenuAdapter extends ArrayAdapter<String> {
 
 	/**
 	 * View を再利用して Adapter を高速化するための ViewHolder クラス
