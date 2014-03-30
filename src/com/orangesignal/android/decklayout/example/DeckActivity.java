@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -82,7 +83,7 @@ public final class DeckActivity extends Activity {
 
 		mListView.setItemChecked(0, true);
 		mSelectedItemPosition = mListView.getSelectedItemPosition();
-		mDeckManager.attach(new DeckCardFragment(), "top");
+		mDeckManager.attach(new HomeFragment(), "top");
 	}
 
 	//////////////////////////////////////////////////////////////////////////
@@ -111,7 +112,21 @@ public final class DeckActivity extends Activity {
 			mDeck.showFirstCard();
 			return false;
 		}
-		mDeckManager.attach(new DeckCardFragment(), "top");
+		final Fragment fragment;
+		switch (position) {
+			case 0: {
+				fragment = new HomeFragment();
+			} break;
+			case 1: {
+				fragment = new PortfolioFragment();
+			} break;
+			case 2: {
+				fragment = new MarketFragment();
+			} break;
+			default:
+				throw new IllegalStateException();
+		}
+		mDeckManager.attach(fragment, "top");
 		mSelectedItemPosition = position;
 		return true;
 	}

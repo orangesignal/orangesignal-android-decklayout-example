@@ -101,7 +101,7 @@
 				<extensions>true</extensions>
 				<configuration>
 					<sdk>
-						<platform>11</platform>
+						<platform>13</platform>
 					</sdk>
 				</configuration>
 			</plugin>

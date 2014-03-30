@@ -18,26 +18,20 @@
 
 package com.orangesignal.android.decklayout.example;
 
-import static android.view.ViewGroup.LayoutParams.FILL_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Build;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.orangesignal.android.decklayout.DeckManager;
 
 /**
  * {@link DeckActivity} 用のフラグメントを提供します。
  * 
- * @author 杉澤 浩二
+ * @author Koji Sugisawa
  */
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class DeckCardFragment extends Fragment {
+public abstract class DeckCardFragment extends Fragment {
 
 	private DeckActivity mDeckActivity;
 
@@ -50,22 +44,6 @@ public class DeckCardFragment extends Fragment {
 		mDeckActivity = (DeckActivity) activity;
 	}
 
-	@Override
-	public View onCreateView(final LayoutInflater inflater, final ViewGroup container, final Bundle savedInstanceState) {
-		final View root = inflater.inflate(R.layout.card, null);
-		root.setLayoutParams(new ViewGroup.LayoutParams(WRAP_CONTENT, FILL_PARENT));
-
-		root.findViewById(android.R.id.button1).setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(final View v) {
-				getDeckManager().attach(new DeckCardFragment(), String.valueOf(System.currentTimeMillis()));
-			}
-		});
-
-		return root;
-	}
-
-	
 	protected final DeckManager getDeckManager() {
 		return mDeckActivity.getDeckManager();
 	}
