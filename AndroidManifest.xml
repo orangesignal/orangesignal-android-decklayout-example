@@ -20,7 +20,7 @@
           android:versionName="1.0.0-SNAPSHOT"
           android:installLocation="auto">
 
-    <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="19" />
+    <uses-sdk android:minSdkVersion="11" />
 
     <supports-screens android:smallScreens="false"
                       android:normalScreens="false"
